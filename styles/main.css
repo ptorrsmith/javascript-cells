@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+/* body {
+    color: white;
+    background-color: black;
+} */
+
+/* div {
+    border: 2px solid red;
+    padding: 10px;
+} */
+
+
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    /* border-radius: 20%; */
+    /* grid-auto-columns: minmax(40px, 80%); */
+    /* align-content: centre; */
+    /* grid-template-columns: 1fr; */
+    /* grid-template-rows: auto; */
+}
+
+
+.multiverse {
+    /* grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); */
+    /* width: 90%; */
+    /* padding: 10px; */
+    
+}
+
+.multiverse.grid {
+    /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+    background-color: coral;
+    padding: 1rem;
+
+}
+.universe {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    background-color: aquamarine;
+    padding: 3rem;
+
+}
+
+.normal {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    background-color: #a3ff7f;
+    padding: 3rem;
+
+}
+
+.child {
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    background-color: #ffd27f;
+    padding: 2rem;
+
+}
+
+
+.grid div {
+    border: 1px solid gray;
+    border-radius: 50%;
+    box-shadow: 3px 3px 5px grey;
+    /* background-color: burlywood;
+    padding: 0.2em; */
+}
+
+
+span {
+    text-align: center;
+    /* display: inline; */
+}
