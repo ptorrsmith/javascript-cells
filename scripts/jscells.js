@@ -18,10 +18,8 @@ var multiverse = {
 
 function startCells() {
     loadMultiverse(1);
-    loadUniverses(2);
-    loadCells(2);
-
-
+    loadUniverses(7);
+    loadCells(11);
 }
 
 
