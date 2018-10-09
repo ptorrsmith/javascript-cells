@@ -19,6 +19,7 @@ var multiverse = {
 function startCells() {
     loadMultiverse(1);
     loadUniverses(2);
+    loadCells(2);
 
 
 }
@@ -49,15 +50,31 @@ function loadUniverses(count) {
         // do count times
         for (j = 0; j < count; j++) {
             let cell = document.createElement('div');
-            cell.className = "child cell grid";
+            cell.className = "normal cell grid";
             cell.id = "cell-" + (i+1) + "." + (j+1);
 
             let cellTitle = document.createElement('span');
-            cellTitle.innerHTML = "child cell " + (i+1) + "." + (j+1);
+            cellTitle.innerHTML = "normal cell " + (i+1) + "." + (j+1);
             cell.appendChild(cellTitle);
             universes[i].appendChild(cell);
-
         }
     }
+}
 
+
+function loadCells(count) {
+    let normalCells = document.getElementsByClassName('normal');
+    for (i = 0; i < normalCells.length; i++) {
+        // do count times
+        for (j = 0; j < count; j++) {
+            let childCell = document.createElement('div');
+            childCell.className = "child cell grid";
+            childCell.id = "cell-" + (i+1) + "." + (j+1);
+
+            let childCellTitle = document.createElement('span');
+            childCellTitle.innerHTML = "child cell " + (i+1) + "." + (j+1);
+            childCell.appendChild(childCellTitle);
+            normalCells[i].appendChild(childCell);
+        }
+    }
 }
