@@ -15,7 +15,23 @@ var multiverse = {
     ]  
 }
 
+var universes = {
+    cells: []
+}
+
+
+
 function startCells() {
-    
+    // load multiverse
+
+
+}
+
+
+
+function loadMultiverse() {
+    // create a two cells (divs of class="cell grid")
+    // 
+
 }
   
