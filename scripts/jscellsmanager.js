@@ -39,11 +39,9 @@ Then start the multiverse
 // document.addEventListener('DOMContentLoaded', CellManager.setCellsStart("Our Multi-verse", 1, 2));
 document.addEventListener('DOMContentLoaded', startCells);
 
-let CellManager; // so in global scope
+let CellManager; // so in global scope.
 
 function startCells() {
-    console.log(`Starting!!`);
-
     // for the onclick="CellManager.setCellsStart(2, "Our Universe")"
     CellManager = {
         setCellsStart: function (name = 'Our Multiverse', description = 'Multiverse of all things real and imaginary!', ancestry_root = '', markdown = '', universeCellQty = 1, initialChildCellQty = 2) { // will default to only 1 "universe" child cell within the multiverse's cells collection.
@@ -85,8 +83,6 @@ function startCells() {
 
     CellManager.setCellsStart();
     CellManager.drawBoard();
-    console.log(`Ending!!`);
-
 }
 
 
