@@ -39,7 +39,7 @@ Then start the multiverse
 // document.addEventListener('DOMContentLoaded', CellManager.setCellsStart("Our Multi-verse", 1, 2));
 document.addEventListener('DOMContentLoaded', startCells);
 
-let CellManager; // so in global scope.
+let CellManager; // so in our global scope
 
 function startCells() {
     // for the onclick="CellManager.setCellsStart(2, "Our Universe")"
