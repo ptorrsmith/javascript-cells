@@ -12,6 +12,15 @@
 } */
 
 
+.dev {
+    background-color: #a3ff7f;
+}
+
+.prod {
+    /* background-color: darkseagreen; */
+}
+
+
 
 .grid {
     display: grid;
