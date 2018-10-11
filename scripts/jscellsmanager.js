@@ -65,9 +65,13 @@ function startCells() {
             for (let i = 0; i < universeCellQty; i++) {
                 let universe = new JSCell(`This Crazy Hihi Universe 2018!`, `Our current reality`, 'aaaaa', `${universalAncestryPrefix}${i + 1}`, `# And what a universe it is!`);
                 for (let j = 0; j < initialChildCellQty; j++) {
-                    let cell = new JSCell(`Child Cell ${j + 1}`, `A cell`, 'bbbb', `${universe.ancestry}.${j + 1}`, `# A child of the universe :-)`);
+                    let cell = new JSCell(`Primary Child Cell ${j + 1}`, `A cell`, 'bbbb', `${universe.ancestry}.${j + 1}`, `# A child of the universe :-)`);
                     for (let k = 0; k < initialChildCellQty; k++) {
                         let newCell = new JSCell(`extra Child Cell ${k + 1}`, `An extra cell`, 'cccc', `${universe.ancestry}.${k + 1}`, `# An extra child of the universe :-)`);
+                        for (let l = 0; l < initialChildCellQty; l++) {
+                            let newNewCell = new JSCell(`Extra extra Child Cell ${l + 1}`, `An EXTRA extra cell`, 'dddd', `${universe.ancestry}.${k + 1}`, `# An EXTRA extra child of the universe :-)`);
+                            cell.cells.push(newNewCell);
+                        }
                         cell.cells.push(newCell);
                     }
                     universe.cells.push(cell);
@@ -118,7 +122,8 @@ function startCells() {
                 let cell = multiverse.cells[i];
                 let cellDiv = document.createElement('div');
                 cellDiv.className = cell.className || 'cell grid test universe';
-                multiverseDiv.appendChild(reduceCellToDiv(cellDiv, cell)); // so should return a div for each child cell in cell.cells
+                let universeCellDiv = reduceCellToDiv(cellDiv, cell);
+                multiverseDiv.appendChild(universeCellDiv); // so should return a div for each child cell in cell.cells
             }
 
             // creating a function to build up div element 
@@ -131,7 +136,7 @@ function startCells() {
                 cellTitleSpan.className = 'cell-title';
                 cellTitleSpan.appendChild(document.createTextNode(cell.name));
                 cellDiv.appendChild(cellTitleSpan);
-      
+
                 let cellDescSpan = document.createElement('span');
                 cellDescSpan.className = 'cell-desc';
                 cellDescSpan.appendChild(document.createTextNode(cell.description));
@@ -141,7 +146,10 @@ function startCells() {
                     // we want to call this function again, to return a div (with title, desc, divs)
                     let ChildCellDiv = document.createElement('div');
                     ChildCellDiv.className = cell.className || 'oops'; //'cell grid universe blah';
-                    cellDiv.appendChild(cell.cells.reduce(reduceCellToDiv, ChildCellDiv));
+                    let newDiv = cell.cells.reduce(reduceCellToDiv, ChildCellDiv);
+                    cellDiv.appendChild(newDiv);
+                } else {
+                    return cellDiv;
                 }
                 return cellDiv;
             }
