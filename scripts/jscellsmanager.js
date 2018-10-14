@@ -4,16 +4,44 @@
 
 
 
-const DEFAULT_CHILD_CELLS = 2;
-const START_GENERATIONS = 3;
-const CELL_ROOT_SELECTOR = '#main1';
+const DEFAULT_CHILD_CELLS = 3;
+const START_GENERATIONS = 2;
+const CELL_ROOT_SELECTOR = 'main';
 
 // should all const variables be in CAPITALS?  
-// const START_TEXT = [
-//     { name: 'The Multiverse', desc: 'Everything real and imaginary', child_count: 1 },
-//     { name: 'The Our Universe', desc: 'Our current reality' },
-//     { name: 'A cell', desc: 'something' },
-// ]
+
+// want to load a cell with cells from a tree array provided
+
+
+// the start root object
+const START_ROOT_CELL = {
+    name: 'The Multiverse', desc: 'Everything real and imaginary', classList: 'multiverse', cells: []
+}
+
+// the initial child cells to load
+const START_CHILD_CELLS_TREE = [
+    {
+        name: 'The Our Universe', desc: 'Our current reality', classList: 'universe', cells: [
+            {
+                name: 'Cell 1', desc: 'something', classList: 'domain', cells: [
+                    { name: 'Grandchild cell 1.1', desc: 'something smaller', classList: 'child' },
+                    { name: 'Grandchild cell 1.2', desc: 'something else smaller', classList: 'child' },
+                    { name: 'Grandchild cell 1.3', desc: 'another something smaller', classList: 'child' }
+                ]
+            },
+            {
+                name: 'Cell 2', desc: 'something else', classList: 'domain', cells: [
+                    { name: 'Grandchild cell 2.1', desc: 'a smaller thing', classList: 'child' },
+                    { name: 'Grandchild cell 2.2', desc: 'good things come in small packages', classList: 'child' },
+                    { name: 'Grandchild cell 2.3', desc: 'yet another small item', classList: 'child' }
+                ]
+            }
+        ]
+    },
+]
+
+
+
 
 document.addEventListener('DOMContentLoaded', startCells());
 
@@ -22,18 +50,21 @@ document.addEventListener('DOMContentLoaded', startCells());
 // let rootCell; // so is in global scope, to iterate through and redraw
 
 function startCells() {
-    setStartState();
-    drawCells();
+    setStartState(); // create the root cell (our multiverse), tell it to make more sample state children
+    drawCells(); // tell the cells to draw themseleves and their children and give me a div to add in as our multiverse
+
 }
 
 
 function setStartState() {
+    // create the root cell (our multiverse), tell it to make more sample state children
     // create multiverse cell
-    rootCell = new JSCell('Our Multiverse', 'All things real and imaginary', 'multiverse');
+    // rootCell = new JSCell('Our Multiverse', 'All things real and imaginary', 'multiverse');
 
-    // now make some children cells and put them into the rootCell's cells array
+    rootCell = new JSCell(START_ROOT_CELL);  // so in future can move cells around or copy trees (yuk!)
+    rootCell.addChildren(START_CHILD_CELLS_TREE);
 
-    // and
+    // rootCell = new JSCell(START_ROOT_CELL).addChildren(START_CHILD_CELLS_TREE);
 
 }
 

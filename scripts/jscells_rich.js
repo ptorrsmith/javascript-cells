@@ -6,7 +6,7 @@ const ROOT_SELECTOR = 'body'
 const text = [
   { title: 'The outside world', desc: 'Everything outside' },
   { title: 'The inside world', desc: 'Everything inside' },
-  { title: 'The micro world', desc: 'A microcosm' }
+  { title: 'The micro world', desc: 'A microcosm cell' }
 ]
 
 function JSCell (title, desc) {
@@ -23,6 +23,7 @@ function JSCell (title, desc) {
 //
 // You can also do `this.draw = function` from within JSCell, but using the
 // prototype is more efficient, and it wouldn't be recursion otherwise.
+// Q?? Why wouldn't it be recursion?
 //
 // We can get away without having an explicit 'stopping condition' here because if
 // `this.children` is empty, `forEach` will simply not do anything.
@@ -39,6 +40,7 @@ JSCell.prototype.procreate = function (generation = 0) {
   if (generation < GENERATIONS) {
     for (let i = 0; i < CHILD_CELLS; i++) {
       const child = new JSCell(
+        // `${text[generation].title} #${i}`,
         text[generation].title,
         text[generation].desc
       )
@@ -48,9 +50,13 @@ JSCell.prototype.procreate = function (generation = 0) {
   }
 }
 
+
+
+
 function start () {
-  const outside = new JSCell(
-    text[0].title,
+  // const outside = new JSCell(
+    const outside = new JSCell(
+      text[0].title,
     text[0].desc
   )
   outside.procreate(1)
