@@ -1,30 +1,18 @@
-/*
-This is the model for a Multiverse of Cells.
-It is used to construct a multiverse object with cell objects which have properties and methods to manage themselves
+// the JSCells model
+// is independent of view or controller
+// knows how to manage itself, such as add a new child
 
-*/
-
-// set global (public) instance variable
-let multiverse; /// so this is in our global scope
-// note: multiverse is just a cell, with a name, description, ancestry (of 0), and optional markdown
+let rootCell; // so is in global scope, to iterate through and redraw
 
 
-// [ts] This constructor function may be converted to a class declaration.
-// function JSCell(name: any, description: any, ancestry: any, markdown: any): void
-// ?? Constructor functions vs class declarations?  
-// and what is super().  extends?  (OOP?)
-// ?? cells is an array, or should we make it a cells collection object, with a name and a cells array?  Future.  Array for now to keep simple.
-
-
-function JSCell(name = 'A Cell', description = '', classProp = '', ancestry = '', markdown = '') {
-    this.name = name; // this means the object created with new JSCell()
-    this.description = description;
-    this.cellClass = `cell grid ${classProp.length > 0 ? ' ' + classProp : ''}`; 
-    this.ancestry = ancestry;
-    this.markdown = markdown;
-    this.cells = [];
-    // future: method to update ancestry of all children
-    // future: this.cellsCollection = new JSCellsCollection
-
+// why is this a function and not a const, or let 
+// or should it be a Class {constructor(){}} ??
+// and why use '=' & ';' instead of ':' and ',' ???
+function JSCell (name, desc, classList, cells = []) {
+    this.name = name;
+    this.description = desc;  // doing this so can see diff between class and instance
+    this.classList = `cell${(classList && classList.length > 0) ? ' ' + classList : ''}`; // display classes such as grid, added when displaying
+    // this.ancestry = '';  Future... needs to update it's own ancestry 
+    this.cells = cells;
 }
 

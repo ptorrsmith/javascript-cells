@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    background-color: #ffe099;
+    padding: 1%;
+  }
+  
+  strong {
+    margin: 0 1%;
+  }
+  
+  body>div {
+    padding: 1%;
+    background-color: #ffc848;
+  }
+  
+  body>div>div {
+    padding: 1%;
+    margin: 1%;
+    background-color: #ffb60b;
+  }
+  
+  body>div>div>div {
+    padding: 0.75%;
+    margin: 0.75%;
+    background-color: #db9900;
+  }
+  
