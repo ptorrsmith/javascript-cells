@@ -51,7 +51,9 @@ document.addEventListener('DOMContentLoaded', startCells());
 
 function startCells() {
     setStartState(); // create the root cell (our multiverse), tell it to make more sample state children
-    drawCells(); // tell the cells to draw themseleves and their children and give me a div to add in as our multiverse
+    document.querySelector(CELL_ROOT_SELECTOR).appendChild(drawCells(rootCell));
+
+    // drawCells(); // tell the cells to draw themseleves and their children and give me a div to add in as our multiverse
 
 }
 
@@ -70,13 +72,16 @@ function setStartState() {
 
 
 
-function drawCells() {
+function drawCells(cell) {
     // JSCell object is unaware of it's presentation, so shouldn't be tied to HTML 
     // needs to have access to the cells collection, and iterate through each to draw them
     // Using global rootCell as start, but could pass this in a cell
     // FUTURE: could pass root cell and a specific cell to be the "in focus" cell
-    const rootCellDiv = createCellDiv(rootCell, 'grid');
-    document.querySelector(CELL_ROOT_SELECTOR).appendChild(rootCellDiv);
+    const cellDiv = createCellDiv(cell, 'grid');
+    cell.cells.forEach(childCell => {
+        cellDiv.appendChild(drawCells(childCell))        
+    });
+    return cellDiv;
 }
 
 
@@ -90,5 +95,8 @@ function redrawCell(cell) {
 function createCellDiv(cell, displayClassList) {
     // takes a cell object and returns div to be appended to a parent element
     const classList = cell.classList + ` ${displayClassList}`;
-    return createHTMLElement('div', classList, 'DELETE THIS');
+    const div = createHTMLElement('div', classList, '');
+    div.appendChild(createHTMLElement('h2', '', cell.name));
+    div.appendChild(createHTMLElement('h3', '', cell.desc));
+    return div;
 }

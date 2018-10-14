@@ -53,6 +53,12 @@ JSCell.prototype.addChildren = function (cells = START_CHILD_CELLS_TREE) {
 }
 
 
+// Ability to pass JSCell object a function which it can use to return a presentation form
+// so could pass it a function to return divs appropriately
+// think we'd use map perhaps? or reduce?  (eek!)
+// JSCell.prototype.present() {}
+
+
 
 
 
